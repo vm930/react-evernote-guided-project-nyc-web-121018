@@ -3,14 +3,25 @@ import Header from './Header';
 import NoteContainer from './NoteContainer';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="app">
-        <Header />
-        <NoteContainer />
-      </div>
-    );
-  }
+	state = {
+		notes: []
+	};
+
+	componentDidMount() {
+		fetch('http://localhost:3000/api/v1/notes').then((res) => res.json()).then((json) => {
+			this.setState({
+				notes: json
+			});
+		});
+	}
+	render() {
+		return (
+			<div className="app">
+				<Header />
+				<NoteContainer notes={this.state.notes} />
+			</div>
+		);
+	}
 }
 
 export default App;
