@@ -14,11 +14,15 @@ class App extends Component {
 			});
 		});
 	}
+
+	selectNote = (noteId) => {
+		console.log('hi?????', noteId);
+	};
 	render() {
 		return (
 			<div className="app">
 				<Header />
-				<NoteContainer notes={this.state.notes} />
+				<NoteContainer notes={this.state.notes} selectNote={this.selectNote} />
 			</div>
 		);
 	}
