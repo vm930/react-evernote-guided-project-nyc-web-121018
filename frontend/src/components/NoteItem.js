@@ -6,9 +6,7 @@ const NoteItem = (props) => {
 	}
 
 	function handleClick() {
-		// console.log('hey');
 		props.selectNote(props.note.id);
-		// console.log(props.note.id);
 	}
 
 	return (

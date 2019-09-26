@@ -4,7 +4,8 @@ import NoteContainer from './NoteContainer';
 
 class App extends Component {
 	state = {
-		notes: []
+		notes: [],
+		selectedNote: ''
 	};
 
 	componentDidMount() {
@@ -16,13 +17,20 @@ class App extends Component {
 	}
 
 	selectNote = (noteId) => {
-		console.log('hi?????', noteId);
+		let foundNote = this.state.notes.filter((note) => note.id === noteId);
+		this.setState({
+			selectNote: foundNote
+		});
 	};
 	render() {
 		return (
 			<div className="app">
 				<Header />
-				<NoteContainer notes={this.state.notes} selectNote={this.selectNote} />
+				<NoteContainer
+					notes={this.state.notes}
+					selectNote={this.selectNote}
+					selectedNote={this.state.selectedNote}
+				/>
 			</div>
 		);
 	}
